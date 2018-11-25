@@ -11,8 +11,15 @@ public abstract class Device {
 	private String date;
 	private User user;
 	private String pc;
-	
-	
+
+	public Device(int id, String date, User user, String pc){
+		this.id = id;
+		this.date = date;
+		this.user = user;
+		this.pc = pc;
+	}
+
+
 	public int getId() {
 		return id;
 	}
