@@ -12,18 +12,19 @@ public class CsvReader {
         csvSplitBy = ",";
     };
 
-    public void readCsv(String csv) {
-
+    public String[] readCsv(String csv) {
         csvFile = csv;
-
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split(csvSplitBy);
-                System.out.println(Arrays.toString(data));
-            }
+            // while ((line = br.readLine()) != null) {
+            line = br.readLine();
+            line = br.readLine();
+            String[] data = line.split(csvSplitBy);
+            System.out.println(Arrays.toString(data));
+            return data;
+            // }
         } catch (IOException e) {
-            System.out.print("ronaldo");
             e.printStackTrace();
+            return null;
         }
     }
 }

@@ -13,4 +13,12 @@ public class User {
         this.role = role;
     }
 
+    public void show() {
+        System.out.println("Name: " + name);
+        System.out.println("Id: " + id);
+        System.out.println("Domain: " + domain);
+        System.out.println("Email: " + email);
+        System.out.println("Role: " + role);
+    }
+
 }

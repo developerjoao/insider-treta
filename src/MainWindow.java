@@ -185,21 +185,22 @@ public class MainWindow {
 
         processCsvButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Initial Date: " + initialDate.getText());
-                System.out.println("Final Date: " + finalDate.getText());
+                // System.out.println("Initial Date: " + initialDate.getText());
+                // System.out.println("Final Date: " + finalDate.getText());
 
-                try {
-                    TimeWindow timeWindow = new TimeWindow(initialDate.getText(), finalDate.getText());
-                    timeWindow.getTimeWindow();
-                } catch (Exception exception) {
-                    System.out.println("Data inválida");
-                    return;
-                }
+                // try {
+                // TimeWindow timeWindow = new TimeWindow(initialDate.getText(),
+                // finalDate.getText());
+                // timeWindow.getTimeWindow();
+                // } catch (Exception exception) {
+                // System.out.println("Data inválida");
+                // return;
+                // }
                 // System.out.println("Ronaldo: " +
                 // timeWindow.isValidDate(initialDate.getText(), "MM/dd/yyyy"));
 
-                // CsvReader reader = new CsvReader();
-                // reader.readCsv(userCsv.getText());
+                CsvReader reader = new CsvReader();
+                reader.readCsv(userCsv.getText());
             }
         });
     }

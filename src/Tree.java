@@ -12,4 +12,8 @@ public class Tree {
     public void addDate(Node<TimeWindow> timeWindow) {
 
     }
+
+    public void showTree() {
+
+    }
 }

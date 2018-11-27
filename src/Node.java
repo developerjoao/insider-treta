@@ -10,4 +10,8 @@ public class Node<T> {
         this.histogram = new int[24];
         this.children = new ArrayList<Node>();
     }
+
+    public T getValue() {
+        return this.value;
+    }
 }
