@@ -11,11 +11,11 @@ public class Node<T> {
         this.children = new ArrayList<Node>();
     }
 
-    public setHistogram(){
+    public void setHistogram(){
 
     }
 
-    public void setChildren(Type<T> newChildren){
+    public void addChildren(Node<T> newChildren){
         this.children.add(newChildren);
     }
 
