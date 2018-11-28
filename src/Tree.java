@@ -2,8 +2,8 @@ public class Tree {
     private Node root;
 
     public Tree(String user) {
-        Node<User> usuario = new Node<User>(user);
-        this.root = user;
+        Node<String> usuario = new Node<String>(user);
+        this.root = usuario;
 
     }
     /***
@@ -17,19 +17,19 @@ public class Tree {
 
     public void addHTTP(String url){
         Node<String> http = new Node<String>("Http");
-        http.addChildren(url);
+        http.addChildren(new Node<String>(url));
         this.root.addChildren(http);
     }
 
     public void addPendrive(String insert){
         Node<String> pendrive = new Node<String>("Pendrive");
-        pendrive.addChildren(insert);
+        pendrive.addChildren(new Node<String>(insert));
         this.root.addChildren(pendrive);
     }
 
     public void addLogon(String logon){
         Node<String> computer = new Node<String>("Computer");
-        computer.addChildren(logon);
+        computer.addChildren(new Node<String>(logon));
         this.root.addChildren(computer);
     }
 

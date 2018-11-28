@@ -15,7 +15,7 @@ public class Node<T> {
 
     }
 
-    public void addChildren(Type<T> newChildren){
+    public void addChildren(Node<T> newChildren){
         this.children.add(newChildren);
     }
 
