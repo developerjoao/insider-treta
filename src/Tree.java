@@ -1,5 +1,5 @@
 public class Tree {
-    private Node root;
+    private Node<String> root;
 
     public Tree(String user) {
         Node<String> usuario = new Node<String>(user);
