@@ -17,19 +17,19 @@ public class Tree {
 
     public void addHTTP(String url){
         Node<String> http = new Node<String>("Http");
-        http.addChildren(url)
+        http.addChildren(url);
         this.root.addChildren(http);
     }
 
     public void addPendrive(String insert){
         Node<String> pendrive = new Node<String>("Pendrive");
-        pendrive.addChildren(insert)
+        pendrive.addChildren(insert);
         this.root.addChildren(pendrive);
     }
 
     public void addLogon(String logon){
         Node<String> computer = new Node<String>("Computer");
-        computer.addChildren(logon)
+        computer.addChildren(logon);
         this.root.addChildren(computer);
     }
 
