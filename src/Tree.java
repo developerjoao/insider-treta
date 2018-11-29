@@ -1,15 +1,19 @@
+import java.util.ArrayList;
+
 public class Tree {
     private Node<String> root;
+    private ArrayList<Node<String>> users;
 
     public Tree(String user) {
         Node<String> usuario = new Node<String>(user);
         this.root = usuario;
 
     }
-    /***
-    public void addUser(Node<User> user) {
-        this.root = user;
-    }*/
+
+    public void addUser(String user) {
+    	Node<String> usuario = new Node<String>(user);
+        this.users.add(usuario);
+    }
 
     public void addDate(Node<TimeWindow> timeWindow) {
 
