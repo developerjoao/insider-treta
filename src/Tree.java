@@ -56,7 +56,7 @@ public class Tree {
     			for(Node<String> filhos: date.getChildren()) {
     				System.out.println("Ha");
     				if(filhos.getValue().equals(pc)) {
-    					System.out.println("Ha");
+    			   		System.out.println("Ha");
     					filhos.setHistogram(hour);
     					this.root.setHistogram(hour);
     					return filhos;
@@ -88,14 +88,17 @@ public class Tree {
     		return;
     	}
     	if(pc.getChildren().isEmpty()) {
-    		Node<String> novoFilho = new Node<String>(url);
+    		Node<String> http = new Node<String>("Http");
+			http.setHistogram(hour);
+			
+			Node<String> novoFilho = new Node<String>(url);
 			novoFilho.setHistogram(hour);
 			
-			pc.addChildren(novoFilho);
-			pc.setHistogram(hour);
-			this.root.setHistogram(hour);
-			return;
-			//adicionar no histograma
+		    http.addChildren(novoFilho);
+		    pc.addChildren(http);
+		    this.root.setHistogram(hour);
+		    return;
+		    //adicionar no histograma
     	}
     	for(Node<String> filhos:pc.getChildren()) {
     		if(filhos.getValue().equals("Http")) {
@@ -139,14 +142,17 @@ public class Tree {
     	}
     	
     	if(pc.getChildren().isEmpty()) {
-    		Node<String> novoFilho = new Node<String>(insert);
+    		Node<String> pendrive = new Node<String>("Pendrive");
+			pendrive.setHistogram(hour);
+			
+			Node<String> novoFilho = new Node<String>(insert);
 			novoFilho.setHistogram(hour);
 			
-			pc.addChildren(novoFilho);
-			pc.setHistogram(hour);
-			this.root.setHistogram(hour);
-			return;
-			//adicionar no histograma
+		    pendrive.addChildren(novoFilho);
+		    pc.addChildren(pendrive);
+		    this.root.setHistogram(hour);
+		    return;
+		    //adicionar no histograma
     	}
     	for(Node<String> filhos:pc.getChildren()) {
     		if(filhos.getValue().equals("Pendrive")) {
@@ -191,14 +197,17 @@ public class Tree {
     	}
     	
     	if(pc.getChildren().isEmpty()) {
-    		Node<String> novoFilho = new Node<String>(logon);
+    		Node<String> computer = new Node<String>("Logon");
+			computer.setHistogram(hour);
+			
+			Node<String> novoFilho = new Node<String>(logon);
 			novoFilho.setHistogram(hour);
 			
-			pc.addChildren(novoFilho);
-			pc.setHistogram(hour);
-			this.root.setHistogram(hour);
-			return;
-			//adicionar no histograma
+		    computer.addChildren(novoFilho);
+		    pc.addChildren(computer);
+		    this.root.setHistogram(hour);
+		    return;
+		    //adicionar no histograma
     	}
     	for(Node<String> filhos:pc.getChildren()) {
     		if(filhos.getValue().equals("Logon")) {
