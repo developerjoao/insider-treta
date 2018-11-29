@@ -11,6 +11,10 @@ public class Node<T> {
         this.children = new ArrayList<Node<String>>();
     }
 
+    public ArrayList<Node<String>> getChildren(){
+    	return this.children;
+    }
+    
     public void setHistogram(){
 
     }
