@@ -6,12 +6,12 @@ public class Tree {
         this.root = usuario;
 
     }
+    
     /***
-    public void addUser(User user) {
-    	Node<User> usuario = new Node<User>(user);
-        this.users.add(usuario);
-    }*/
-
+     * Adiciona uma data ao nó de data ao usuário que está
+     * sendo análisado.
+     * @param date A data que está sendo lida no CSV.
+     * */
     public void addDate(String date) {
     	for(Node<String> filhos: root.getChildren()) {
     		if(filhos.getValue() == date) {
@@ -24,6 +24,12 @@ public class Tree {
     	}
     }
 
+    /***
+     * Adiciona à data que está sendo analisada um Http e a url
+     * da mesma linha do CSV.
+     * @param currentDate	A data analisáda.
+     * @param url O url que será adicionado ao nó Http.  
+     * */
     public void addHTTP(String currentDate, String url){
     	for(Node<String> date: root.getChildren()) {
     		if(date.getValue() == currentDate) {
@@ -45,6 +51,12 @@ public class Tree {
         */
     }
 
+    /***
+     * Adiciona à data que está sendo analisada um Pendrive e a inserção
+     * da mesma linha do CSV.
+     * @param currentDate	A data analisáda.
+     * @param insert A inserção que será adicionado ao nó Http. 
+     * */
     public void addPendrive(String currentDate, String insert){
     	for(Node<String> date: root.getChildren()) {
     		if(date.getValue() == currentDate) {
@@ -66,6 +78,13 @@ public class Tree {
         */
     }
 
+    
+    /***
+     * Adiciona à data que está sendo analisada um Http e a url
+     * da mesma linha do CSV.
+     * @param currentDate	A data analisáda.
+     * @param url O url que será adicionado ao nó Http. 
+     * */
     public void addLogon(String currentDate, String logon){
     	for(Node<String> date: root.getChildren()) {
     		if(date.getValue() == currentDate) {
