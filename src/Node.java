@@ -23,6 +23,10 @@ public class Node<T> {
     	return this.children;
     }
     
+    /***
+     * Aumenta em 1 a frequencia no histograma.
+     * @param hour Hora da atividade vinda do log.
+     * */
     public void setHistogram(int hour){
     	this.histogram[hour]+=1;
     }
@@ -32,18 +36,14 @@ public class Node<T> {
      * @param newChildren o novo filho a ser adicionado ao nó em questão.
      * */
     public void addChildren(Node<String> newChildren){
-    	/***for(Node<String> filhos:this.getChildren()) {
-    		if(filhos.getValue() == newChildren.getValue()) {
-    			//Adiciona no histograma.
-    			return;
-    		}
-    	}*/
         this.children.add(newChildren);
     }
     
-    public boolean InChildren(String value) {
+    public boolean InChildren(String value, int hour) {
     	for(Node<String> filho:this.getChildren()) {
     		if(filho.getValue() == value) {
+    			this.setHistogram(hour);
+    			filho.setHistogram(hour);
     			return true;
     		}
     	}

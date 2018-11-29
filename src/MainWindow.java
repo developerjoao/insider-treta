@@ -4,8 +4,13 @@ import javax.swing.*;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class MainWindow {
+	private ArrayList<Tree> usuarios;
+	
+	private String dataTotal;
+	
     private JFrame frame;
 
     private JPanel panel1;
@@ -61,7 +66,8 @@ public class MainWindow {
 					User user = new User(data[0], data[1], data[2], data[3], data[4]);
 					user.show();
 					
-					// Crie o nó aqui
+					Tree usuario = new Tree(user);
+					this.usuarios.add(usuario);
 				}
 			}					
 			reader.close();
@@ -75,12 +81,16 @@ public class MainWindow {
     		String dataInicial = initialDate.getText();
     		String dataFinal = finalDate.getText();
     		
-    		String dataTotal = dataInicial + " " + dataFinal;
-    		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    		dataTotal = dataInicial + " " + dataFinal;
+    		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
     		LocalDate inicio = LocalDate.parse(dataInicial, formatter);
     		LocalDate fim = LocalDate.parse(dataFinal, formatter);
     		
-    		// Adicionar nós de data aqui
+    		for(Tree usuario:this.usuarios) {
+    			usuario.addDate(dataTotal);
+    		}
+    		
+    		// Adicionar nos de data aqui
     	} catch (Exception el) {
     		el.printStackTrace();
     	}
@@ -113,7 +123,12 @@ public class MainWindow {
 					System.out.println("PC: " + pc);
 					System.out.println("Activity: " + activity);
 					
-					// Crie o nó aqui
+					for(Tree usuario:this.usuarios) {
+						if(usuario.getRoot().getValue().getId().equals(userId)) {
+							Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
+							usuario.addPendrive(currentPc, activity, Integer.parseInt(hour));
+						}
+					}
 				}
 			}					
 			reader.close();
@@ -149,7 +164,14 @@ public class MainWindow {
 					System.out.println("PC: " + pc);
 					System.out.println("Activity: " + activity);
 					
-					// Crie o nó aqui
+					
+					for(Tree usuario:this.usuarios) {
+						if(usuario.getRoot().getValue().getId().equals(userId)) {
+							Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
+							usuario.addHTTP(currentPc, activity, Integer.parseInt(hour));
+						}
+					}
+					// Crie o no aqui
 				}
 			}					
 			reader.close();
@@ -185,7 +207,14 @@ public class MainWindow {
 					System.out.println("PC: " + pc);
 					System.out.println("Activity: " + activity);
 					
-					// Crie o nó aqui
+					
+					for(Tree usuario:this.usuarios) {
+						if(usuario.getRoot().getValue().getId().equals(userId)) {
+							Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
+							usuario.addLogon(currentPc, activity, Integer.parseInt(hour));
+						}
+					}
+					// Crie o no aqui 
 				}
 			}					
 			reader.close();
