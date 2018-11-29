@@ -114,9 +114,11 @@ public class MainWindow {
 					
 					String [] date = data[1].split(" ");
 					String day = date[0]; // Variável com o dia
-					String hour = date[1]; // Variável com o horário
+					String hour = date[1].split(":")[0]; // Variável com o horário
 					
 					String userId = data[2]; // Variável com o Id do usuário
+					String userIdCorrected = userId.split("/")[1];
+					
 					String pc = data[3]; // Variável com o Id do PC
 					
 					String activity = data[4]; // Variável com a atividade
@@ -127,7 +129,7 @@ public class MainWindow {
 					if( (currentDate.isEqual(this.inicio)||currentDate.isAfter(this.inicio)) &&
 							(currentDate.isEqual(this.fim)||currentDate.isBefore(this.fim))) {
 						for(Tree usuario:this.usuarios) {
-							if(usuario.getRoot().getValue().getId().equals(userId)) {
+							if(usuario.getRoot().getValue().getId().equals(userIdCorrected)) {
 								System.out.println("Inserindo Pendrive");
 								Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
 								usuario.addPendrive(currentPc, activity, Integer.parseInt(hour));
@@ -163,9 +165,11 @@ public class MainWindow {
 					
 					String [] date = data[1].split(" ");
 					String day = date[0]; // Variável com o dia
-					String hour = date[1]; // Variável com o horário
+					String hour = date[1].split(":")[0]; // Variável com o horário
 					
 					String userId = data[2]; // Variável com o Id do usuário
+					String userIdCorrected = userId.split("/")[1];
+					
 					String pc = data[3]; // Variável com o Id do PC
 					
 					String activity = data[4]; // Variável com a atividade					
@@ -176,7 +180,7 @@ public class MainWindow {
 					if( (currentDate.isEqual(this.inicio)||currentDate.isAfter(this.inicio)) &&
 							(currentDate.isEqual(this.fim)||currentDate.isBefore(this.fim))) {
 						for(Tree usuario:this.usuarios) {
-							if(usuario.getRoot().getValue().getId().equals(userId)) {
+							if(usuario.getRoot().getValue().getId().equals(userIdCorrected)) {
 								System.out.println("Inserindo Http");
 								Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
 								usuario.addHTTP(currentPc, activity, Integer.parseInt(hour));
@@ -206,9 +210,11 @@ public class MainWindow {
 					
 					String [] date = data[1].split(" ");
 					String day = date[0]; // Variável com o dia
-					String hour = date[1]; // Variável com o horário
+					String hour = date[1].split(":")[0]; // Variável com o horário
 					
 					String userId = data[2]; // Variável com o Id do usuário
+					String userIdCorrected = userId.split("/")[1];
+					
 					String pc = data[3]; // Variável com o Id do PC
 					
 					String activity = data[4]; // Variável com a atividade					
@@ -219,7 +225,7 @@ public class MainWindow {
 					if( (currentDate.isEqual(this.inicio)||currentDate.isAfter(this.inicio)) &&
 							(currentDate.isEqual(this.fim)||currentDate.isBefore(this.fim))) {
 						for(Tree usuario:this.usuarios) {
-							if(usuario.getRoot().getValue().getId().equals(userId)) {
+							if(usuario.getRoot().getValue().getId().equals(userIdCorrected)) {
 								System.out.println("Inserindo Logon");
 								Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
 								usuario.addLogon(currentPc, activity, Integer.parseInt(hour));
@@ -417,10 +423,10 @@ public class MainWindow {
 					}
         		}
         		
-        		//Criar arquivo de usu�rio com as informa��es.
+        		//Criar arquivo de usu�rio com as informa��es.
         		
         		if(not_found) {
-        			System.out.println("Usu�rio n�o encontrado!");
+        			System.out.println("Usu�rio n�o encontrado!");
         		}
         	}
         });
