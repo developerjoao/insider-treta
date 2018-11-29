@@ -27,6 +27,12 @@ public class Tree {
     	}
     }
 
+    /***
+     * Acha um computador que o usuário que está sendo lido utilizou.
+     * @param currentDate a data em questão que está sendo analisada
+     * @param pc O computador utilizado pelo usuário durante a análise.
+     * @return Retorna um objeto que representa o computador que o usuário utilizou.
+     * */
     public Node<String> findPC(String currentDate, String pc) {
     	
     	for(Node<String> date:root.getChildren()) {
@@ -54,7 +60,7 @@ public class Tree {
     /***
      * Adiciona à data que está sendo analisada um Http e a url
      * da mesma linha do CSV.
-     * @param pc	O computador analisado.
+     * @param pc O computador utilizado pelo usuário durante a análise.
      * @param url O url que será adicionado ao nó Http.  
      * */
     public void addHTTP(Node<String> pc, String url){
@@ -81,7 +87,7 @@ public class Tree {
     /***
      * Adiciona à data que está sendo analisada um Pendrive e a inserção
      * da mesma linha do CSV.
-     * @param currentDate	A data analisáda.
+     * @param pc O computador utilizado pelo usuário durante a análise.
      * @param insert A inserção que será adicionado ao nó Http. 
      * */
     public void addPendrive(Node<String> pc, String insert){
@@ -107,6 +113,10 @@ public class Tree {
 
     
     /***
+     * Adiciona os dados de logon que foram feitos pelo usuário no computador
+     * análisado.
+     * @param pc O pc utilizado pelo usuário durante a análise.
+     * @param logon a atividade de logon ou logoff.
      * */
     public void addLogon(Node<String> pc, String logon){
     	if(pc.getValue() == " ") {
