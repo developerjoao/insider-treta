@@ -62,6 +62,7 @@ public class Node<T> {
     public void show() {
     	System.out.println("Value: "+ this.getValue());
     	for(Node<String> filhos:this.getChildren()) {
+    		System.out.println("Imprimindo filhos:");
     		filhos.show();
     	}
     }
