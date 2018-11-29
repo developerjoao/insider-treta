@@ -48,9 +48,12 @@ public class MainWindow {
     private JLabel logonCsv;
     private JButton logonCsvButton;
 
+    // panel6
     private JButton processCsvButton;
+    private JButton showUserTree;
     
     public MainWindow() {
+    	this.usuarios = new ArrayList<Tree>();
         createInterface();
     }
     
@@ -66,7 +69,6 @@ public class MainWindow {
 				} else {
 					String [] data = line.split(",");
 					User user = new User(data[0], data[1], data[2], data[3], data[4]);
-					user.show();
 					
 					Tree usuario = new Tree(user);
 					this.usuarios.add(usuario);
@@ -119,12 +121,6 @@ public class MainWindow {
 					
 					String activity = data[4]; // Variável com a atividade
 					
-					System.out.println("User: " + userId);
-					System.out.println("Dia: " + day);
-					System.out.println("Hora: " + hour);
-					System.out.println("PC: " + pc);
-					System.out.println("Activity: " + activity);
-					
 					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 					LocalDate currentDate = LocalDate.parse(day, formatter);
 					
@@ -171,14 +167,7 @@ public class MainWindow {
 					String userId = data[2]; // Variável com o Id do usuário
 					String pc = data[3]; // Variável com o Id do PC
 					
-					String activity = data[4]; // Variável com a atividade
-					
-					System.out.println("User: " + userId);
-					System.out.println("Dia: " + day);
-					System.out.println("Hora: " + hour);
-					System.out.println("PC: " + pc);
-					System.out.println("Activity: " + activity);
-					
+					String activity = data[4]; // Variável com a atividade					
 					
 					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 					LocalDate currentDate = LocalDate.parse(day, formatter);
@@ -220,14 +209,7 @@ public class MainWindow {
 					String userId = data[2]; // Variável com o Id do usuário
 					String pc = data[3]; // Variável com o Id do PC
 					
-					String activity = data[4]; // Variável com a atividade
-					
-					System.out.println("User: " + userId);
-					System.out.println("Dia: " + day);
-					System.out.println("Hora: " + hour);
-					System.out.println("PC: " + pc);
-					System.out.println("Activity: " + activity);
-					
+					String activity = data[4]; // Variável com a atividade					
 					
 					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 					LocalDate currentDate = LocalDate.parse(day, formatter);
@@ -335,8 +317,10 @@ public class MainWindow {
         panel6.setLayout(new GridLayout(1, 1));
 
         processCsvButton = new JButton("Processar arquivos");
+        showUserTree = new JButton("Mostrar perfil");
 
         panel6.add(processCsvButton);
+        panel6.add(showUserTree);
 
         frame.add(panel1);
         frame.add(panel2);
@@ -416,6 +400,19 @@ public class MainWindow {
             		JOptionPane.showMessageDialog(null, "Preencha corretamente os campos");
             	}
             }
+        });
+        
+        showUserTree.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		String userId = "BMS0001";
+        		
+        		for(Tree usuario:usuarios) {
+					if(usuario.getRoot().getValue().getId().equals(userId)) {
+						usuario.showTree();
+					}
+        		}
+        	}
         });
     }
 }
