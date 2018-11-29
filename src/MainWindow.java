@@ -128,6 +128,7 @@ public class MainWindow {
 							(currentDate.isEqual(this.fim)||currentDate.isBefore(this.fim))) {
 						for(Tree usuario:this.usuarios) {
 							if(usuario.getRoot().getValue().getId().equals(userId)) {
+								System.out.println("Inserindo Pendrive");
 								Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
 								usuario.addPendrive(currentPc, activity, Integer.parseInt(hour));
 							}
@@ -176,6 +177,7 @@ public class MainWindow {
 							(currentDate.isEqual(this.fim)||currentDate.isBefore(this.fim))) {
 						for(Tree usuario:this.usuarios) {
 							if(usuario.getRoot().getValue().getId().equals(userId)) {
+								System.out.println("Inserindo Http");
 								Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
 								usuario.addHTTP(currentPc, activity, Integer.parseInt(hour));
 							}
@@ -218,6 +220,7 @@ public class MainWindow {
 							(currentDate.isEqual(this.fim)||currentDate.isBefore(this.fim))) {
 						for(Tree usuario:this.usuarios) {
 							if(usuario.getRoot().getValue().getId().equals(userId)) {
+								System.out.println("Inserindo Logon");
 								Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
 								usuario.addLogon(currentPc, activity, Integer.parseInt(hour));
 							}
