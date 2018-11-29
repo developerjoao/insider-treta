@@ -28,11 +28,35 @@ public class Tree {
      * @return Retorna um objeto que representa o computador que o usuário utilizou.
      * */
     public Node<String> findPC(String currentDate, String pc, int hour) {
-    	
+
     	for(Node<String> date:root.getChildren()) {
-    		if(date.getValue() == currentDate) {
+    		if(date.getValue().equals(currentDate)) {
+    			if(date.getChildren().isEmpty()) {
+    				Node<String> computer = new Node<String>(pc);
+					date.addChildren(computer);
+					computer.setHistogram(hour);
+					this.root.setHistogram(hour);
+					return computer;
+    			}else {
+    				for(Node<String> filhos: date.getChildren()) {
+        				if(filhos.getValue().equals(pc)) {
+        					filhos.setHistogram(hour);
+        					this.root.setHistogram(hour);
+        					return filhos;
+        				}else {
+        					Node<String> computer = new Node<String>(pc);
+        					date.addChildren(computer);
+        					computer.setHistogram(hour);
+        					this.root.setHistogram(hour);
+        					return computer;
+        				}
+        			}
+    			}
+    			/***
     			for(Node<String> filhos: date.getChildren()) {
-    				if(filhos.getValue() == pc) {
+    				System.out.println("Ha");
+    				if(filhos.getValue().equals(pc)) {
+    					System.out.println("Ha");
     					filhos.setHistogram(hour);
     					this.root.setHistogram(hour);
     					return filhos;
@@ -43,12 +67,12 @@ public class Tree {
     					this.root.setHistogram(hour);
     					return computer;
     				}
-    			}
+    			}*/
     		}
     	}
     	
     	//Por necessitar um retorno.
-    	Node<String> falha = new Node<String>(" ");
+    	Node<String> falha = new Node<String>("Falha");
 		return falha;
     }
     
@@ -60,11 +84,21 @@ public class Tree {
      * @param url O url que será adicionado ao nó Http.  
      * */
     public void addHTTP(Node<String> pc, String url, int hour){
-    	if(pc.getValue() == " ") {
+    	if(pc.getValue().equals("Falha")) {
     		return;
     	}
+    	if(pc.getChildren().isEmpty()) {
+    		Node<String> novoFilho = new Node<String>(url);
+			novoFilho.setHistogram(hour);
+			
+			pc.addChildren(novoFilho);
+			pc.setHistogram(hour);
+			this.root.setHistogram(hour);
+			return;
+			//adicionar no histograma
+    	}
     	for(Node<String> filhos:pc.getChildren()) {
-    		if(filhos.getValue() == "Http") {
+    		if(filhos.getValue().equals("Http")) {
 				if(filhos.InChildren(url, hour)) {
 					this.root.setHistogram(hour);
     				return;
@@ -100,11 +134,22 @@ public class Tree {
      * @param insert A inserção que será adicionado ao nó Http. 
      * */
     public void addPendrive(Node<String> pc, String insert, int hour){
-    	if(pc.getValue() == " ") {
+    	if(pc.getValue().equals("Falha")) {
     		return;
     	}
+    	
+    	if(pc.getChildren().isEmpty()) {
+    		Node<String> novoFilho = new Node<String>(insert);
+			novoFilho.setHistogram(hour);
+			
+			pc.addChildren(novoFilho);
+			pc.setHistogram(hour);
+			this.root.setHistogram(hour);
+			return;
+			//adicionar no histograma
+    	}
     	for(Node<String> filhos:pc.getChildren()) {
-    		if(filhos.getValue() == "Pendrive") {
+    		if(filhos.getValue().equals("Pendrive")) {
     			if(filhos.InChildren(insert, hour)) {
     				this.root.setHistogram(hour);
     				return;
@@ -141,11 +186,22 @@ public class Tree {
      * @param logon a atividade de logon ou logoff.
      * */
     public void addLogon(Node<String> pc, String logon, int hour){
-    	if(pc.getValue() == " ") {
+    	if(pc.getValue().equals("Falha")) {
     		return;
     	}
+    	
+    	if(pc.getChildren().isEmpty()) {
+    		Node<String> novoFilho = new Node<String>(logon);
+			novoFilho.setHistogram(hour);
+			
+			pc.addChildren(novoFilho);
+			pc.setHistogram(hour);
+			this.root.setHistogram(hour);
+			return;
+			//adicionar no histograma
+    	}
     	for(Node<String> filhos:pc.getChildren()) {
-    		if(filhos.getValue() == "Logon") {
+    		if(filhos.getValue().equals("Logon")) {
     			if(filhos.InChildren(logon, hour)) {
     				this.root.setHistogram(hour);
     				return;

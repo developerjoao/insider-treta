@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Node<T> {
     private T value;
@@ -29,6 +30,10 @@ public class Node<T> {
      * */
     public void setHistogram(int hour){
     	this.histogram[hour]+=1;
+    }
+    
+    public void showHistogram() {
+    	System.out.println(Arrays.toString(this.histogram));
     }
 
     /***

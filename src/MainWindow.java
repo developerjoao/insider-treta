@@ -130,19 +130,12 @@ public class MainWindow {
 							(currentDate.isEqual(this.fim)||currentDate.isBefore(this.fim))) {
 						for(Tree usuario:this.usuarios) {
 							if(usuario.getRoot().getValue().getId().equals(userIdCorrected)) {
-								System.out.println("Inserindo Pendrive");
+								System.out.println("Inserindo Pendrive na hora " + hour);
 								Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
 								usuario.addPendrive(currentPc, activity, Integer.parseInt(hour));
 							}
 						}
 					}
-					/***
-					for(Tree usuario:this.usuarios) {
-						if(usuario.getRoot().getValue().getId().equals(userId)) {
-							Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
-							usuario.addPendrive(currentPc, activity, Integer.parseInt(hour));
-						}
-					}*/
 				}
 			}					
 			reader.close();
@@ -181,7 +174,7 @@ public class MainWindow {
 							(currentDate.isEqual(this.fim)||currentDate.isBefore(this.fim))) {
 						for(Tree usuario:this.usuarios) {
 							if(usuario.getRoot().getValue().getId().equals(userIdCorrected)) {
-								System.out.println("Inserindo Http");
+								System.out.println("Inserindo Http na hora "+ hour);
 								Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
 								usuario.addHTTP(currentPc, activity, Integer.parseInt(hour));
 							}
@@ -226,7 +219,7 @@ public class MainWindow {
 							(currentDate.isEqual(this.fim)||currentDate.isBefore(this.fim))) {
 						for(Tree usuario:this.usuarios) {
 							if(usuario.getRoot().getValue().getId().equals(userIdCorrected)) {
-								System.out.println("Inserindo Logon");
+								System.out.println("Inserindo Logon na hora "+ hour);
 								Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
 								usuario.addLogon(currentPc, activity, Integer.parseInt(hour));
 							}
@@ -419,6 +412,7 @@ public class MainWindow {
         		for(Tree usuario:usuarios) {
 					if(usuario.getRoot().getValue().getId().equals(userId)) {
 						not_found = false;
+						usuario.getRoot().showHistogram();
 						usuario.showTree();
 					}
         		}
@@ -426,7 +420,7 @@ public class MainWindow {
         		//Criar arquivo de usu�rio com as informa��es.
         		
         		if(not_found) {
-        			System.out.println("Usu�rio n�o encontrado!");
+        			System.out.println("Usuario nao encontrado!");
         		}
         	}
         });
