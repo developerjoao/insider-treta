@@ -1,11 +1,3 @@
-/**
- * 
- */
-
-/**
- * @author jvfca
- *
- */
 public class Pendrive extends Device{
 	private boolean insert;
 

@@ -1,11 +1,3 @@
-/**
- * 
- */
-
-/**
- * @author jvfca
- *
- */
 public abstract class Device {
 	private int id;
 	private String date;

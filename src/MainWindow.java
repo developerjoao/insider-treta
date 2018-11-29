@@ -2,7 +2,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
-import java.util.ArrayList;
 
 public class MainWindow {
     private JFrame frame;
@@ -43,10 +42,73 @@ public class MainWindow {
     private JButton processCsvButton;
 
     public MainWindow() {
-        mountComponents();
+        createInterface();
+    }
+    
+    private void readUserCsv() {
+    	try {
+			BufferedReader reader = new BufferedReader(new FileReader(userCsv.getText()));
+			String header = reader.readLine();
+			
+			while (true) {
+				String line = reader.readLine();
+				if (line.isEmpty()) {
+					break;
+				} else {
+					String [] data = line.split(",");
+					User user = new User(data[0], data[1], data[2], data[3], data[4]);
+					user.show();
+					
+					// Crie o nó aqui
+				}
+			}					
+			reader.close();
+    	} catch (Exception e1) {
+			e1.printStackTrace();
+		}
     }
 
-    private void mountComponents() {
+    private void readDate() {
+    	try {
+    		String dataInicial = initialDate.getText();
+    		String dataFinal = finalDate.getText();
+    		
+    		// Adicionar nós de data aqui
+    	} catch (Exception el) {
+    		el.printStackTrace();
+    	}
+    }
+    
+    private void readDeviceCsv() {
+    	try {
+			BufferedReader reader = new BufferedReader(new FileReader(userCsv.getText()));
+			String header = reader.readLine();
+			
+			while (true) {
+				String line = reader.readLine();
+				if (line.isEmpty()) {
+					break;
+				} else {
+					String [] data = line.split(",");
+					User user = new User(data[0], data[1], data[2], data[3], data[4]);
+					user.show();
+					
+					// Crie o nó aqui
+				}
+			}					
+			reader.close();
+    	} catch (Exception el) {
+    		el.printStackTrace();
+    	}
+    }
+    
+    private void processAction() {
+    	// Ler Csv dos usuários
+    	readUserCsv();
+    	readDate();
+    }
+    
+    private void createInterface() {
         frame = new JFrame("Insider Threat");
         frame.setLayout(new GridLayout(6, 6));
 
@@ -186,35 +248,7 @@ public class MainWindow {
 
         processCsvButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // System.out.println("Initial Date: " + initialDate.getText());
-                // System.out.println("Final Date: " + finalDate.getText());
-
-                // try {
-                // TimeWindow timeWindow = new TimeWindow(initialDate.getText(),
-                // finalDate.getText());
-                // timeWindow.getTimeWindow();
-                // } catch (Exception exception) {
-                // System.out.println("Data inválida");
-                // return;
-                // }
-                // System.out.println("Ronaldo: " +
-                // timeWindow.isValidDate(initialDate.getText(), "MM/dd/yyyy"));
-
-            	try {
-					BufferedReader reader = new BufferedReader(new FileReader(userCsv.getText()));
-					String header = reader.readLine();
-					
-					String line = reader.readLine();
-					String[] data = line.split(",");
-					
-					User user = new User(data[0], data[1], data[2], data[3], data[4]);
-					
-					user.show();
-					
-					reader.close();
-            	} catch (Exception e1) {
-					e1.printStackTrace();
-				}
+            	processAction();
             }
         });
     }
