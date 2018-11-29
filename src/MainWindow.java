@@ -406,11 +406,18 @@ public class MainWindow {
         	public void actionPerformed(ActionEvent e) {
         		
         		String userId = "BMS0001";
-        		
+        		boolean not_found = true;
         		for(Tree usuario:usuarios) {
 					if(usuario.getRoot().getValue().getId().equals(userId)) {
+						not_found = false;
 						usuario.showTree();
 					}
+        		}
+        		
+        		//Criar arquivo de usuário com as informações.
+        		
+        		if(not_found) {
+        			System.out.println("Usuário não encontrado!");
         		}
         	}
         });
