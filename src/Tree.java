@@ -175,5 +175,9 @@ public class Tree {
     }
 
     public void showTree() {
+    	this.root.getValue().show();
+    	for(Node<String> data:this.root.getChildren()) {
+    		data.show();
+    	}
     }
 }

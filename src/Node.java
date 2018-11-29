@@ -57,4 +57,12 @@ public class Node<T> {
     public T getValue() {
         return this.value;
     }
+    
+    
+    public void show() {
+    	System.out.println("Value: "+ this.getValue());
+    	for(Node<String> filhos:this.getChildren()) {
+    		filhos.show();
+    	}
+    }
 }
