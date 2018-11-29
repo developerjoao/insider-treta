@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.io.*;
+import java.util.ArrayList;
 
 public class CsvReader {
 
@@ -16,7 +17,6 @@ public class CsvReader {
         csvFile = csv;
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             // while ((line = br.readLine()) != null) {
-            line = br.readLine();
             line = br.readLine();
             String[] data = line.split(csvSplitBy);
             System.out.println(Arrays.toString(data));

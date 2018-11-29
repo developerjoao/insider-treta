@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
 
 public class MainWindow {
     private JFrame frame;
@@ -199,8 +200,21 @@ public class MainWindow {
                 // System.out.println("Ronaldo: " +
                 // timeWindow.isValidDate(initialDate.getText(), "MM/dd/yyyy"));
 
-                CsvReader reader = new CsvReader();
-                reader.readCsv(userCsv.getText());
+            	try {
+					BufferedReader reader = new BufferedReader(new FileReader(userCsv.getText()));
+					String header = reader.readLine();
+					
+					String line = reader.readLine();
+					String[] data = line.split(",");
+					
+					User user = new User(data[0], data[1], data[2], data[3], data[4]);
+					
+					user.show();
+					
+					reader.close();
+            	} catch (Exception e1) {
+					e1.printStackTrace();
+				}
             }
         });
     }
