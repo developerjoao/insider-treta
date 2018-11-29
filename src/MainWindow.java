@@ -2,6 +2,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class MainWindow {
     private JFrame frame;
@@ -40,12 +42,179 @@ public class MainWindow {
     private JButton logonCsvButton;
 
     private JButton processCsvButton;
-
+    
     public MainWindow() {
-        mountComponents();
+        createInterface();
+    }
+    
+    private void readUserCsv() {
+    	try {
+			BufferedReader reader = new BufferedReader(new FileReader(userCsv.getText()));
+			String header = reader.readLine();
+			
+			while (true) {
+				String line = reader.readLine();
+				if (line == null) {
+					break;
+				} else {
+					String [] data = line.split(",");
+					User user = new User(data[0], data[1], data[2], data[3], data[4]);
+					user.show();
+					
+					// Crie o nó aqui
+				}
+			}					
+			reader.close();
+    	} catch (Exception e1) {
+			e1.printStackTrace();
+		}
     }
 
-    private void mountComponents() {
+    private void readDate() {
+    	try {
+    		String dataInicial = initialDate.getText();
+    		String dataFinal = finalDate.getText();
+    		
+    		String dataTotal = dataInicial + " " + dataFinal;
+    		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    		LocalDate inicio = LocalDate.parse(dataInicial, formatter);
+    		LocalDate fim = LocalDate.parse(dataFinal, formatter);
+    		
+    		// Adicionar nós de data aqui
+    	} catch (Exception el) {
+    		el.printStackTrace();
+    	}
+    }
+    
+    private void readDeviceCsv() {
+    	try {
+			BufferedReader reader = new BufferedReader(new FileReader(deviceCsv.getText()));
+			String header = reader.readLine();
+			
+			while (true) {
+				String line = reader.readLine();
+				if (line == null) {
+					break;
+				} else {
+					String [] data = line.split(",");
+					
+					String [] date = data[1].split(" ");
+					String day = date[0]; // Variável com o dia
+					String hour = date[1]; // Variável com o horário
+					
+					String userId = data[2]; // Variável com o Id do usuário
+					String pc = data[3]; // Variável com o Id do PC
+					
+					String activity = data[4]; // Variável com a atividade
+					
+					System.out.println("User: " + userId);
+					System.out.println("Dia: " + day);
+					System.out.println("Hora: " + hour);
+					System.out.println("PC: " + pc);
+					System.out.println("Activity: " + activity);
+					
+					// Crie o nó aqui
+				}
+			}					
+			reader.close();
+    	} catch (Exception el) {
+    		el.printStackTrace();
+    	}
+    }
+
+    private void readHttpCsv() {
+    	try {
+			BufferedReader reader = new BufferedReader(new FileReader(httpCsv.getText()));
+			String header = reader.readLine();
+			
+			while (true) {
+				String line = reader.readLine();
+				if (line == null) {
+					break;
+				} else {
+					String [] data = line.split(",");
+					
+					String [] date = data[1].split(" ");
+					String day = date[0]; // Variável com o dia
+					String hour = date[1]; // Variável com o horário
+					
+					String userId = data[2]; // Variável com o Id do usuário
+					String pc = data[3]; // Variável com o Id do PC
+					
+					String activity = data[4]; // Variável com a atividade
+					
+					System.out.println("User: " + userId);
+					System.out.println("Dia: " + day);
+					System.out.println("Hora: " + hour);
+					System.out.println("PC: " + pc);
+					System.out.println("Activity: " + activity);
+					
+					// Crie o nó aqui
+				}
+			}					
+			reader.close();
+    	} catch (Exception e1) {
+    		e1.printStackTrace();
+		}
+    }
+
+    private void readLogonCsv() {
+    	try {
+			BufferedReader reader = new BufferedReader(new FileReader(logonCsv.getText()));
+			String header = reader.readLine();
+			
+			while (true) {
+				String line = reader.readLine();
+				if (line == null) {
+					break;
+				} else {
+					String [] data = line.split(",");
+					
+					String [] date = data[1].split(" ");
+					String day = date[0]; // Variável com o dia
+					String hour = date[1]; // Variável com o horário
+					
+					String userId = data[2]; // Variável com o Id do usuário
+					String pc = data[3]; // Variável com o Id do PC
+					
+					String activity = data[4]; // Variável com a atividade
+					
+					System.out.println("User: " + userId);
+					System.out.println("Dia: " + day);
+					System.out.println("Hora: " + hour);
+					System.out.println("PC: " + pc);
+					System.out.println("Activity: " + activity);
+					
+					// Crie o nó aqui
+				}
+			}					
+			reader.close();
+    	} catch (Exception el) {
+    		el.printStackTrace();
+    	}
+    }
+    
+    private boolean validate() {
+    	boolean flag = true;
+    	
+    	if(userCsv.getText().isEmpty() || deviceCsv.getText().isEmpty() 
+    			|| httpCsv.getText().isEmpty() || logonCsv.getText().isEmpty() 
+    			|| initialDate.getText().isEmpty() || finalDate.getText().isEmpty()) {
+    		flag = false;
+    	}
+    	
+    	return flag;
+    }
+    
+    private void processAction() {
+    	readUserCsv();
+    	readDate();
+    	readDeviceCsv();
+    	readHttpCsv();
+    	readLogonCsv();
+    }
+    
+    private void createInterface() {
         frame = new JFrame("Insider Threat");
         frame.setLayout(new GridLayout(6, 6));
 
@@ -63,9 +232,9 @@ public class MainWindow {
         panel2 = new JPanel();
         panel2.setLayout(new GridLayout(1, 1));
 
-        initialDateLabel = new JLabel("Data Inicial: ");
+        initialDateLabel = new JLabel("Data Inicial (dd/MM/yyyy): ");
         initialDate = new JTextField();
-        finalDateLabel = new JLabel("Data Final: ");
+        finalDateLabel = new JLabel("Data Final (dd/MM/yyyy): ");
         finalDate = new JTextField();
 
         panel2.add(initialDateLabel);
@@ -126,7 +295,7 @@ public class MainWindow {
 
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
-
+        
         userCsvButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
@@ -185,22 +354,11 @@ public class MainWindow {
 
         processCsvButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // System.out.println("Initial Date: " + initialDate.getText());
-                // System.out.println("Final Date: " + finalDate.getText());
-
-                // try {
-                // TimeWindow timeWindow = new TimeWindow(initialDate.getText(),
-                // finalDate.getText());
-                // timeWindow.getTimeWindow();
-                // } catch (Exception exception) {
-                // System.out.println("Data inválida");
-                // return;
-                // }
-                // System.out.println("Ronaldo: " +
-                // timeWindow.isValidDate(initialDate.getText(), "MM/dd/yyyy"));
-
-                CsvReader reader = new CsvReader();
-                reader.readCsv(userCsv.getText());
+            	if(validate()) {
+            		processAction();
+            	} else {
+            		JOptionPane.showMessageDialog(null, "Preencha corretamente os campos");
+            	}
             }
         });
     }

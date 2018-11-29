@@ -12,6 +12,10 @@ public class User {
         this.email = email;
         this.role = role;
     }
+    
+    public String getId() {
+    	return this.id;
+    }
 
     public void show() {
         System.out.println("Name: " + name);
