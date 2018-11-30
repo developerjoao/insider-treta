@@ -1,6 +1,6 @@
 ## Insider Treta
 
-# CompilaÃ§Ã£o
+# Compilação
 
 Na pasta raiz do projeto, executar o comando:
 
@@ -8,7 +8,7 @@ Na pasta raiz do projeto, executar o comando:
 javac -cp ./src/*.java -d ./bin
 ```
 
-# ExecuÃ§Ã£o
+# Execução
 
 Na pasta raiz do projeto, executar o comando:
 
