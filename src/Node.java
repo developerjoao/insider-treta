@@ -66,8 +66,10 @@ public class Node<T> {
     		inner+= Math.pow(this.histogram[i] - avgHistogram[i],2);
     	}
     	
+    	
     	double distance = Math.sqrt(inner);
     	
+    	//Se a distancia for maior que um número médio, Este usuário é suspeito.
     	if(Math.ceil(distance)>1) {
     		return true;
     	}
