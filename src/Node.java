@@ -36,6 +36,10 @@ public class Node<T> {
     	System.out.println(Arrays.toString(this.histogram));
     }
 
+    public void showHistogram() {
+    	System.out.println(Arrays.toString(this.histogram));
+    }
+    
     /***
      * Adiciona um filho no array de filhos do n�.
      * @param newChildren o novo filho a ser adicionado ao n� em quest�o.

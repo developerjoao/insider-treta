@@ -441,6 +441,7 @@ public class MainWindow {
 						not_found = false;
 						usuario.getRoot().showHistogram();
 						usuario.showTree();
+						usuario.getRoot().showHistogram();
 					}
         		}
         		

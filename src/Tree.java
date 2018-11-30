@@ -6,6 +6,10 @@ public class Tree {
         this.root = usuario;
     }
     
+    /***
+     * Método para poder acessar os métodos de Usuário da árvore.
+     * @return O objeto Usuário.
+     * */
     public Node<User> getRoot(){
     	return this.root;
     } 
@@ -96,7 +100,7 @@ public class Tree {
     				
         			filhos.addChildren(novoFilho);
         			filhos.setHistogram(hour);
-        			this.root.setHistogram(hour);
+        			//this.root.setHistogram(hour);
         			return;
         			//adicionar no histograma
 				}
@@ -139,7 +143,7 @@ public class Tree {
     				
         			filhos.addChildren(novoFilho);
         			filhos.setHistogram(hour);
-        			this.root.setHistogram(hour);
+        			//this.root.setHistogram(hour);
         			return;
         			//adicionar no histograma
         		}
@@ -183,7 +187,7 @@ public class Tree {
     				
         			filhos.addChildren(novoFilho);
         			filhos.setHistogram(hour);
-        			this.root.setHistogram(hour);
+        			//this.root.setHistogram(hour);
         			return;
         			//adicionar no histograma
         		}
@@ -191,6 +195,9 @@ public class Tree {
     	}
     }
 
+    /***
+     * Função que tenta imprimir um usuário e seus filhos.
+     * */
     public void showTree() {
     	this.root.getValue().show();
     	for(Node<String> data:this.root.getChildren()) {
