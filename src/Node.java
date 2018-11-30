@@ -32,10 +32,9 @@ public class Node<T> {
     	this.histogram[hour]+=1;
     }
     
-    public void showHistogram() {
-    	System.out.println(Arrays.toString(this.histogram));
-    }
-
+    /***
+     * Método que imprime o histograma de um nó.
+     * */
     public void showHistogram() {
     	System.out.println(Arrays.toString(this.histogram));
     }
@@ -48,6 +47,13 @@ public class Node<T> {
         this.children.add(newChildren);
     }
     
+    /***
+     * Método que diz se um dado valor se encontra nos filhos de um
+     * nó de String.
+     * @param value Valor a ser procurado
+     * @param hour Hora em que deve ser incrementado o histograma
+     * @return True se houver um filho com o valor, false caso contrário.
+     * */
     public boolean InChildren(String value, int hour) {
     	for(Node<String> filho:this.getChildren()) {
     		if(filho.getValue() == value) {
@@ -67,9 +73,10 @@ public class Node<T> {
         return this.value;
     }
     
-    
+    /***
+     * Método que imprime os filhos da árvore de usuário.
+     * */
     public void show() {    	
-    	System.out.println("Teste");
     	System.out.println("Value: "+ this.getValue());
     	for(Node<String> filhos:this.getChildren()) {
     		System.out.println("Imprimindo filhos:");
