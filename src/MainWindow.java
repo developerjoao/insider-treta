@@ -22,7 +22,8 @@ public class MainWindow {
     private JPanel panel5;
     private JPanel panel6;
     private JPanel panel7;
-
+    private JPanel panel8;
+    
     // panel1
     private JLabel userCsvLabel;
     private JLabel userCsv;
@@ -56,6 +57,9 @@ public class MainWindow {
     private JLabel userIdInputLabel;
     private JTextField userIdInput;
     private JButton showUserTree;
+    
+    // panel8
+    private JButton detectButton;
     
     public MainWindow() {
     	this.usuarios = new ArrayList<Tree>();
@@ -261,7 +265,7 @@ public class MainWindow {
     
     private void createInterface() {
         frame = new JFrame("Insider Threat");
-        frame.setLayout(new GridLayout(7, 7));
+        frame.setLayout(new GridLayout(8, 8));
 
         panel1 = new JPanel();
         panel1.setLayout(new GridLayout(1, 1));
@@ -337,6 +341,13 @@ public class MainWindow {
         panel7.add(userIdInputLabel);
         panel7.add(userIdInput);
         panel7.add(showUserTree);
+        
+        panel8 = new JPanel();
+        panel8.setLayout(new GridLayout(1, 1));
+        
+        detectButton = new JButton("Detectar Anomalias");
+        
+        panel8.add(detectButton);
 
         frame.add(panel1);
         frame.add(panel2);
@@ -345,6 +356,7 @@ public class MainWindow {
         frame.add(panel5);
         frame.add(panel6);
         frame.add(panel7);
+        frame.add(panel8);
 
         frame.pack();
 
