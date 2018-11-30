@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Node<T> {
     private T value;
@@ -31,6 +32,10 @@ public class Node<T> {
     	this.histogram[hour]+=1;
     }
 
+    public void showHistogram() {
+    	System.out.println(Arrays.toString(this.histogram));
+    }
+    
     /***
      * Adiciona um filho no array de filhos do nó.
      * @param newChildren o novo filho a ser adicionado ao nó em questão.

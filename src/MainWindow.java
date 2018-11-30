@@ -417,13 +417,14 @@ public class MainWindow {
 					if(usuario.getRoot().getValue().getId().equals(userId)) {
 						not_found = false;
 						usuario.showTree();
+						usuario.getRoot().showHistogram();
 					}
         		}
         		
         		//Criar arquivo de usu�rio com as informa��es.
         		
         		if(not_found) {
-        			System.out.println("Usu�rio n�o encontrado!");
+        			System.out.println("Usuario nao encontrado!");
         		}
         	}
         });
