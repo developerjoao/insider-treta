@@ -130,7 +130,6 @@ public class MainWindow {
 							(currentDate.isEqual(this.fim)||currentDate.isBefore(this.fim))) {
 						for(Tree usuario:this.usuarios) {
 							if(usuario.getRoot().getValue().getId().equals(userIdCorrected)) {
-								System.out.println("Inserindo Pendrive");
 								Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
 								usuario.addPendrive(currentPc, activity, Integer.parseInt(hour));
 							}
@@ -181,7 +180,6 @@ public class MainWindow {
 							(currentDate.isEqual(this.fim)||currentDate.isBefore(this.fim))) {
 						for(Tree usuario:this.usuarios) {
 							if(usuario.getRoot().getValue().getId().equals(userIdCorrected)) {
-								System.out.println("Inserindo Http");
 								Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
 								usuario.addHTTP(currentPc, activity, Integer.parseInt(hour));
 							}
@@ -226,7 +224,6 @@ public class MainWindow {
 							(currentDate.isEqual(this.fim)||currentDate.isBefore(this.fim))) {
 						for(Tree usuario:this.usuarios) {
 							if(usuario.getRoot().getValue().getId().equals(userIdCorrected)) {
-								System.out.println("Inserindo Logon");
 								Node<String> currentPc = usuario.findPC(dataTotal, pc, Integer.parseInt(hour));
 								usuario.addLogon(currentPc, activity, Integer.parseInt(hour));
 							}
@@ -414,7 +411,7 @@ public class MainWindow {
         showUserTree.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
-        		String userId = "BMS0001";
+        		String userId = "YCB0005";
         		boolean not_found = true;
         		for(Tree usuario:usuarios) {
 					if(usuario.getRoot().getValue().getId().equals(userId)) {

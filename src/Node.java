@@ -63,7 +63,18 @@ public class Node<T> {
     	System.out.println("Value: "+ this.getValue());
     	for(Node<String> filhos:this.getChildren()) {
     		System.out.println("Imprimindo filhos:");
-    		filhos.show();
+    		System.out.println(filhos.getValue());
+    		for(Node<String> filhos2:filhos.getChildren()) {
+    			if(filhos2.getValue().equals("Pendrive")) {
+    				filhos2.show();
+    			}
+    			if(filhos2.getValue().equals("Http")) {
+    				filhos2.show();
+    			}
+    			if(filhos2.getValue().equals("Logon")) {
+    				filhos2.show();
+    			}
+    		}
     	}
     }
 }

@@ -29,21 +29,30 @@ public class Tree {
      * */
     public Node<String> findPC(String currentDate, String pc, int hour) {
     	
+    	
     	for(Node<String> date:root.getChildren()) {
-    		if(date.getValue() == currentDate) {
-    			for(Node<String> filhos: date.getChildren()) {
-    				if(filhos.getValue() == pc) {
-    					filhos.setHistogram(hour);
-    					this.root.setHistogram(hour);
-    					return filhos;
-    				}else {
-    					Node<String> computer = new Node<String>(pc);
-    					date.addChildren(computer);
-    					computer.setHistogram(hour);
-    					this.root.setHistogram(hour);
-    					return computer;
-    				}
-    			}
+    		if(date.getValue().equals(currentDate)) {
+    			if(date.getChildren().isEmpty()) {
+    				Node<String> computer = new Node<String>(pc);
+					date.addChildren(computer);
+					computer.setHistogram(hour);
+					this.root.setHistogram(hour);
+					return computer;
+    			}else {
+	    			for(Node<String> filhos: date.getChildren()) {
+	    				if(filhos.getValue().equals(pc)) {
+	    					filhos.setHistogram(hour);
+	    					this.root.setHistogram(hour);
+	    					return filhos;
+	    				}else {
+	    					Node<String> computer = new Node<String>(pc);
+	    					date.addChildren(computer);
+	    					computer.setHistogram(hour);
+	    					this.root.setHistogram(hour);
+	    					return computer;
+	    				}
+	    			}
+	    		}
     		}
     	}
     	
@@ -63,8 +72,21 @@ public class Tree {
     	if(pc.getValue() == " ") {
     		return;
     	}
+    	if(pc.getChildren().isEmpty()) {
+    		Node<String> http = new Node<String>("Http");
+			http.setHistogram(hour);
+			
+			Node<String> novoFilho = new Node<String>(url);
+			novoFilho.setHistogram(hour);
+			
+		    http.addChildren(novoFilho);
+		    pc.addChildren(http);
+		    this.root.setHistogram(hour);
+		    return;
+		    //adicionar no histograma
+    	}
     	for(Node<String> filhos:pc.getChildren()) {
-    		if(filhos.getValue() == "Http") {
+    		if(filhos.getValue().equals("Http")) {
 				if(filhos.InChildren(url, hour)) {
 					this.root.setHistogram(hour);
     				return;
@@ -76,19 +98,9 @@ public class Tree {
         			filhos.addChildren(novoFilho);
         			filhos.setHistogram(hour);
         			this.root.setHistogram(hour);
+        			return;
         			//adicionar no histograma
 				}
-			}else {
-				Node<String> http = new Node<String>("Http");
-    			http.setHistogram(hour);
-    			
-    			Node<String> novoFilho = new Node<String>(url);
-    			novoFilho.setHistogram(hour);
-    			
-			    http.addChildren(novoFilho);
-			    pc.addChildren(http);
-			    this.root.setHistogram(hour);
-			    //adicionar no histograma
 			}
     	}
     }
@@ -103,8 +115,22 @@ public class Tree {
     	if(pc.getValue() == " ") {
     		return;
     	}
+    	if(pc.getChildren().isEmpty()) {
+    		Node<String> pendrive = new Node<String>("Pendrive");
+			pendrive.setHistogram(hour);
+			
+			Node<String> novoFilho = new Node<String>(insert);
+			novoFilho.setHistogram(hour);
+			
+		    pendrive.addChildren(novoFilho);
+		    pc.addChildren(pendrive);
+		    this.root.setHistogram(hour);
+		    return;
+		    //adicionar no histograma
+    	}
+    	
     	for(Node<String> filhos:pc.getChildren()) {
-    		if(filhos.getValue() == "Pendrive") {
+    		if(filhos.getValue().equals("Pendrive")) {
     			if(filhos.InChildren(insert, hour)) {
     				this.root.setHistogram(hour);
     				return;
@@ -116,19 +142,9 @@ public class Tree {
         			filhos.addChildren(novoFilho);
         			filhos.setHistogram(hour);
         			this.root.setHistogram(hour);
+        			return;
         			//adicionar no histograma
         		}
-    		}else {
-    			Node<String> pendrive = new Node<String>("Pendrive");
-    			pendrive.setHistogram(hour);
-    			
-    			Node<String> novoFilho = new Node<String>(insert);
-    			novoFilho.setHistogram(hour);
-    			
-			    pendrive.addChildren(novoFilho);
-			    pc.addChildren(pendrive);
-			    this.root.setHistogram(hour);
-			    //adicionar no histograma
     		}
     	}
     }
@@ -144,8 +160,21 @@ public class Tree {
     	if(pc.getValue() == " ") {
     		return;
     	}
+    	if(pc.getChildren().isEmpty()) {
+    		Node<String> computer = new Node<String>("Logon");
+			computer.setHistogram(hour);
+			
+			Node<String> novoFilho = new Node<String>(logon);
+			novoFilho.setHistogram(hour);
+			
+		    computer.addChildren(novoFilho);
+		    pc.addChildren(computer);
+		    this.root.setHistogram(hour);
+		    return;
+		    //adicionar no histograma
+    	}
     	for(Node<String> filhos:pc.getChildren()) {
-    		if(filhos.getValue() == "Logon") {
+    		if(filhos.getValue().equals("Logon")) {
     			if(filhos.InChildren(logon, hour)) {
     				this.root.setHistogram(hour);
     				return;
@@ -157,19 +186,9 @@ public class Tree {
         			filhos.addChildren(novoFilho);
         			filhos.setHistogram(hour);
         			this.root.setHistogram(hour);
+        			return;
         			//adicionar no histograma
         		}
-    		}else {
-    			Node<String> computer = new Node<String>("Logon");
-    			computer.setHistogram(hour);
-    			
-    			Node<String> novoFilho = new Node<String>(logon);
-    			novoFilho.setHistogram(hour);
-    			
-			    computer.addChildren(novoFilho);
-			    pc.addChildren(computer);
-			    this.root.setHistogram(hour);
-			    //adicionar no histograma
     		}
     	}
     }
