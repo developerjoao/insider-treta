@@ -451,5 +451,11 @@ public class MainWindow {
         		}
         	}
         });
+    
+        detectButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
     }
 }
