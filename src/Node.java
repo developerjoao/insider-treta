@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.lang.Math;
 
 public class Node<T> {
     private T value;
@@ -33,10 +34,44 @@ public class Node<T> {
     }
     
     /***
+     * Método para obter o valor especifico de um campo do histograma
+     * para gerar o valor médio.
+     * @param hour Hora do valor que será retornado.
+     * @return Valor do histograma na hora dada.
+     * */
+    public int getHistogram(int hour) {
+    	return this.histogram[hour];
+    }
+    
+    /***
      * Método que imprime o histograma de um nó.
      * */
     public void showHistogram() {
     	System.out.println(Arrays.toString(this.histogram));
+    }
+    
+    /***
+     * Método que calcula a distância do usuária análisado do
+     * usuário médio. Se a distancia entre o usuário médio 
+     * e o usuário analisado for maior que 1, ele é considerado
+     * suspeito.
+     * @param int[] Histograma do usuário médio
+     * @return True se o usuário for suspeito, false se for considerado normal.
+     * */
+    public boolean enclideanDistance(int[] avgHistogram) {
+    	
+    	double inner = 0;
+    	
+    	for(int i = 0;i<24;i++) {
+    		inner+= Math.pow(this.histogram[i] - avgHistogram[i],2);
+    	}
+    	
+    	double distance = Math.sqrt(inner);
+    	
+    	if(Math.ceil(distance)>1) {
+    		return true;
+    	}
+    	return false;
     }
     
     /***

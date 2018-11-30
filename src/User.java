@@ -5,6 +5,9 @@ public class User {
     private String email;
     private String role;
 
+    /***
+     * Construtor de Usuário.
+     * */
     public User(String name, String id, String domain, String email, String role) {
         this.name = name;
         this.id = id;
@@ -13,10 +16,17 @@ public class User {
         this.role = role;
     }
     
+    /***
+     * Método para retornar o Id do usuário.
+     * @return id Id do usuário.
+     * */
     public String getId() {
     	return this.id;
     }
 
+    /***
+     * Método que imprime os atributos do usuário.
+     * */
     public void show() {
         System.out.println("Name: " + name);
         System.out.println("Id: " + id);

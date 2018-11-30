@@ -4,6 +4,9 @@ public abstract class Device {
 	private User user;
 	private String pc;
 
+	/***
+	 * Construtor da classe device.
+	 * */
 	public Device(int id, String date, User user, String pc){
 		this.id = id;
 		this.date = date;
