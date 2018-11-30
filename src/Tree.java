@@ -11,9 +11,9 @@ public class Tree {
     } 
     
     /***
-     * Adiciona uma data ao nÛ de data ao usu·rio que est·
-     * sendo an·lisado.
-     * @param date A data que est· sendo lida no CSV.
+     * Adiciona uma data ao n√≥ de data ao usu√°rio que est√°
+     * sendo an√°lisado.
+     * @param date A data que est√° sendo lida no CSV.
      * */
     public void addDate(String date) {
     	Node<String> data = new Node<String>(date);
@@ -22,14 +22,13 @@ public class Tree {
     }
 
     /***
-     * Acha um computador que o usu·rio que est· sendo lido utilizou.
-     * @param currentDate a data em quest„o que est· sendo analisada
-     * @param pc O computador utilizado pelo usu·rio durante a an·lise.
-     * @return Retorna um objeto que representa o computador que o usu·rio utilizou.
+     * Acha um computador que o usu√°rio que est√° sendo lido utilizou.
+     * @param currentDate a data em quest√£o que est√° sendo analisada
+     * @param pc O computador utilizado pelo usu√°rio durante a an√°lise.
+     * @return Retorna um objeto que representa o computador que o usu√°rio utilizou.
      * */
     public Node<String> findPC(String currentDate, String pc, int hour) {
-    	
-    	
+
     	for(Node<String> date:root.getChildren()) {
     		if(date.getValue().equals(currentDate)) {
     			if(date.getChildren().isEmpty()) {
@@ -57,19 +56,19 @@ public class Tree {
     	}
     	
     	//Por necessitar um retorno.
-    	Node<String> falha = new Node<String>(" ");
+    	Node<String> falha = new Node<String>("Falha");
 		return falha;
     }
     
     
     /***
-     * Adiciona ‡ data que est· sendo analisada um Http e a url
+     * Adiciona √† data que est√° sendo analisada um Http e a url
      * da mesma linha do CSV.
-     * @param pc O computador utilizado pelo usu·rio durante a an·lise.
-     * @param url O url que ser· adicionado ao nÛ Http.  
+     * @param pc O computador utilizado pelo usu√°rio durante a an√°lise.
+     * @param url O url que ser√° adicionado ao n√≥ Http.  
      * */
     public void addHTTP(Node<String> pc, String url, int hour){
-    	if(pc.getValue() == " ") {
+    	if(pc.getValue().equals("Falha")) {
     		return;
     	}
     	if(pc.getChildren().isEmpty()) {
@@ -106,13 +105,13 @@ public class Tree {
     }
 
     /***
-     * Adiciona ‡ data que est· sendo analisada um Pendrive e a inserÁ„o
+     * Adiciona √† data que est√° sendo analisada um Pendrive e a inser√ß√£o
      * da mesma linha do CSV.
-     * @param pc O computador utilizado pelo usu·rio durante a an·lise.
-     * @param insert A inserÁ„o que ser· adicionado ao nÛ Http. 
+     * @param pc O computador utilizado pelo usu√°rio durante a an√°lise.
+     * @param insert A inser√ß√£o que ser√° adicionado ao n√≥ Http. 
      * */
     public void addPendrive(Node<String> pc, String insert, int hour){
-    	if(pc.getValue() == " ") {
+    	if(pc.getValue().equals("Falha")) {
     		return;
     	}
     	if(pc.getChildren().isEmpty()) {
@@ -128,7 +127,6 @@ public class Tree {
 		    return;
 		    //adicionar no histograma
     	}
-    	
     	for(Node<String> filhos:pc.getChildren()) {
     		if(filhos.getValue().equals("Pendrive")) {
     			if(filhos.InChildren(insert, hour)) {
@@ -151,13 +149,13 @@ public class Tree {
 
     
     /***
-     * Adiciona os dados de logon que foram feitos pelo usu·rio no computador
-     * an·lisado.
-     * @param pc O pc utilizado pelo usu·rio durante a an·lise.
+     * Adiciona os dados de logon que foram feitos pelo usu√°rio no computador
+     * an√°lisado.
+     * @param pc O pc utilizado pelo usu√°rio durante a an√°lise.
      * @param logon a atividade de logon ou logoff.
      * */
     public void addLogon(Node<String> pc, String logon, int hour){
-    	if(pc.getValue() == " ") {
+    	if(pc.getValue().equals("Falha")) {
     		return;
     	}
     	if(pc.getChildren().isEmpty()) {
