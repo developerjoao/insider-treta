@@ -427,7 +427,6 @@ public class MainWindow {
         		for(Tree usuario:usuarios) {
 					if(usuario.getRoot().getValue().getId().equals(userId)) {
 						not_found = false;
-						usuario.getRoot().showHistogram();
 						usuario.showTree();
 						usuario.getRoot().showHistogram();
 					}
