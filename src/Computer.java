@@ -7,18 +7,27 @@
  *
  */
 public class Computer extends Device{
-	private boolean logon;
+	private String logon;
 
-	public Computer(int id, String date, User user, String pc, boolean logon){
+	/***
+	 * Construtor de uma classe logon.
+	 * */
+	public Computer(int id, String date, User user, String pc, String logon){
 		super(id,date,user,pc);
 		this.logon = logon;
 	}
 
-	public boolean isLogon() {
+	/***
+	 * Metodo que retorna o atributo logon.
+	 * */
+	public String isLogon() {
 		return logon;
 	}
 
-	public void setLogon(boolean logon) {
+	/***
+	 * Metodo que assimila o atributo logon.
+	 * */
+	public void setLogon(String logon) {
 		this.logon = logon;
 	}
 }

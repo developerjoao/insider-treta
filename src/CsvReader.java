@@ -8,11 +8,19 @@ public class CsvReader {
     private String line;
     private String csvSplitBy;
 
+    /***
+     * Construtor do leitor de CSV
+     * */
     public CsvReader() {
         line = "";
         csvSplitBy = ",";
     };
 
+    /***
+     * Método que vai ler as linhas do CSV.
+     * @param csv Linha do csv para ser lida
+     * @return Array de dados que serão separados para serem tratados pelo sistema.
+     * */
     public String[] readCsv(String csv) {
         csvFile = csv;
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {

@@ -5,9 +5,11 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class MainWindow {
 	private ArrayList<Tree> usuarios;
+	private ArrayList<Tree> suspeitos;
 	
 	private String dataTotal;
 	LocalDate inicio;
@@ -61,11 +63,21 @@ public class MainWindow {
     // panel8
     private JButton detectButton;
     
+    
+    /***
+     * Método que cria a interface e inicializa tanto
+     * o array de usuários, quando o array de suspeitos
+     * que vão ser utilizados durante a utilização do sistema.
+     * */
     public MainWindow() {
     	this.usuarios = new ArrayList<Tree>();
+    	this.suspeitos = new ArrayList<Tree>();
         createInterface();
     }
     
+    /***
+     * Método para ler o CSV de Usuários.
+     * */
     private void readUserCsv() {
     	try {
 			BufferedReader reader = new BufferedReader(new FileReader(userCsv.getText()));
@@ -89,6 +101,11 @@ public class MainWindow {
 		}
     }
 
+    /***
+     * Método para ler e adicionar data à árvore de Usuario,
+     * também assimila data inicial e final para checagem e validação
+     * para análise do sistema.
+     * */
     private void readDate() {
     	try {
     		String dataInicial = initialDate.getText();
@@ -109,6 +126,9 @@ public class MainWindow {
     	}
     }
     
+    /***
+     * Método para ler o CSV de Pendrive.
+     * */
     private void readDeviceCsv() {
     	try {
 			BufferedReader reader = new BufferedReader(new FileReader(deviceCsv.getText()));
@@ -153,6 +173,9 @@ public class MainWindow {
     	}
     }
 
+    /***
+     * Método para ler o CSV de Http.
+     * */
     private void readHttpCsv() {
     	try {
 			BufferedReader reader = new BufferedReader(new FileReader(httpCsv.getText()));
@@ -198,6 +221,9 @@ public class MainWindow {
 		}
     }
 
+    /***
+     * Método para ler o CSV de Logon.
+     * */
     private void readLogonCsv() {
     	try {
 			BufferedReader reader = new BufferedReader(new FileReader(logonCsv.getText()));
@@ -243,6 +269,9 @@ public class MainWindow {
     	}
     }
     
+    /***
+     * Método que checa se os campos de arquivos estão vazios.
+     * */
     private boolean validate() {
     	boolean flag = true;
     	
@@ -255,6 +284,9 @@ public class MainWindow {
     	return flag;
     }
     
+    /***
+     * Método que via processar as ações do sistema.
+     * */
     private void processAction() {
     	readUserCsv();
     	readDate();
@@ -263,6 +295,9 @@ public class MainWindow {
     	readLogonCsv();
     }
     
+    /***
+     * Método que gera a interface do sistema.
+     * */
     private void createInterface() {
         frame = new JFrame("Insider Threat");
         frame.setLayout(new GridLayout(8, 8));
@@ -281,9 +316,9 @@ public class MainWindow {
         panel2 = new JPanel();
         panel2.setLayout(new GridLayout(1, 1));
 
-        initialDateLabel = new JLabel("Data Inicial (dd/MM/yyyy): ");
+        initialDateLabel = new JLabel("Data Inicial (MM/dd/yyyy): ");
         initialDate = new JTextField();
-        finalDateLabel = new JLabel("Data Final (dd/MM/yyyy): ");
+        finalDateLabel = new JLabel("Data Final (MM/dd/yyyy): ");
         finalDate = new JTextField();
 
         panel2.add(initialDateLabel);
@@ -365,6 +400,9 @@ public class MainWindow {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
         
+        /***
+         * Botão que vai selecionar o arquivo CSV referente aos usuários.
+         * */
         userCsvButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
@@ -379,6 +417,9 @@ public class MainWindow {
             }
         });
 
+        /***
+         * Botão que vai selecionar o arquivo CSV referente ao Pendrive.
+         * */
         deviceCsvButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
@@ -393,6 +434,9 @@ public class MainWindow {
             }
         });
 
+        /***
+         * Botão que vai selecionar o arquivo CSV referente ao Http.
+         * */
         httpCsvButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
@@ -407,6 +451,9 @@ public class MainWindow {
             }
         });
 
+        /***
+         * Botão que vai selecionar o arquivo CSV referente ao Logon.
+         * */
         logonCsvButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
@@ -420,7 +467,10 @@ public class MainWindow {
                 }
             }
         });
-
+        
+        /***
+         * Botão que vai validar se todos os campos foram preenchidos corretamente.
+         * */
         processCsvButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	if(validate()) {
@@ -431,6 +481,10 @@ public class MainWindow {
             }
         });
         
+        /***
+         * Botão para mostrar um usuário específico processado. é necessário
+         * passar o Id do usuário para poder mostrar seus dados.
+         * */
         showUserTree.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
@@ -452,8 +506,33 @@ public class MainWindow {
         	}
         });
     
+        /***
+         * Botão para detectar usuários suspeitos no sistema.
+         * */
         detectButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		
+        		int[] avgHistogram = new int[24];
+        		
+        		for(Tree usuario:usuarios) {
+        			for(int i=0;i<24;i++) {
+        				avgHistogram[i] += usuario.getRoot().getHistogram(i);
+        			}
+        		}
+        		
+        		for(int i = 0;i<24;i++) {
+        			avgHistogram[i] = (int) Math.ceil(avgHistogram[i]/usuarios.size());
+        		}
+        		
+        		for(Tree usuario:usuarios) {
+        			if(usuario.getRoot().enclideanDistance(avgHistogram)) {
+        				suspeitos.add(usuario);
+        			}
+        		}
+        		
+        		for(Tree suspeito:suspeitos) {
+        			System.out.println("Usuario suspeito: "+suspeito.getRoot().getValue().getId());
+        		}
         		
         	}
         });
