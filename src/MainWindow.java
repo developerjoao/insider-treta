@@ -21,6 +21,7 @@ public class MainWindow {
     private JPanel panel4;
     private JPanel panel5;
     private JPanel panel6;
+    private JPanel panel7;
 
     // panel1
     private JLabel userCsvLabel;
@@ -50,6 +51,10 @@ public class MainWindow {
 
     // panel6
     private JButton processCsvButton;
+    
+    // panel7
+    private JLabel userIdInputLabel;
+    private JTextField userIdInput;
     private JButton showUserTree;
     
     public MainWindow() {
@@ -256,7 +261,7 @@ public class MainWindow {
     
     private void createInterface() {
         frame = new JFrame("Insider Threat");
-        frame.setLayout(new GridLayout(6, 6));
+        frame.setLayout(new GridLayout(7, 7));
 
         panel1 = new JPanel();
         panel1.setLayout(new GridLayout(1, 1));
@@ -319,10 +324,19 @@ public class MainWindow {
         panel6.setLayout(new GridLayout(1, 1));
 
         processCsvButton = new JButton("Processar arquivos");
-        showUserTree = new JButton("Mostrar perfil");
 
         panel6.add(processCsvButton);
-        panel6.add(showUserTree);
+        
+        panel7 = new JPanel();
+        panel7.setLayout(new GridLayout(1, 1));
+        
+        userIdInputLabel = new JLabel("Digite o id do usuário: ");
+        userIdInput = new JTextField();
+        showUserTree = new JButton("Mostrar perfil");
+        
+        panel7.add(userIdInputLabel);
+        panel7.add(userIdInput);
+        panel7.add(showUserTree);
 
         frame.add(panel1);
         frame.add(panel2);
@@ -330,6 +344,7 @@ public class MainWindow {
         frame.add(panel4);
         frame.add(panel5);
         frame.add(panel6);
+        frame.add(panel7);
 
         frame.pack();
 
@@ -407,7 +422,7 @@ public class MainWindow {
         showUserTree.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
-        		String userId = "YCB0005";
+        		String userId = userIdInput.getText();
         		boolean not_found = true;
         		for(Tree usuario:usuarios) {
 					if(usuario.getRoot().getValue().getId().equals(userId)) {

@@ -8,7 +8,7 @@ public class Node<T> {
 
     
     /***
-     * @param value O valor que inicia o nó.
+     * @param value O valor que inicia o nï¿½.
      * */
     public Node(T value) {
         this.value = value;
@@ -16,9 +16,9 @@ public class Node<T> {
         this.children = new ArrayList<Node<String>>();
     }
     /***
-     * Retorna os filhos de um nó para poder manipulá-los
+     * Retorna os filhos de um nï¿½ para poder manipulï¿½-los
      * no processo de leitura dos CSV.
-     *@return Os filhos do nó em questão.
+     *@return Os filhos do nï¿½ em questï¿½o.
      * */
     public ArrayList<Node<String>> getChildren(){
     	return this.children;
@@ -37,8 +37,8 @@ public class Node<T> {
     }
 
     /***
-     * Adiciona um filho no array de filhos do nó.
-     * @param newChildren o novo filho a ser adicionado ao nó em questão.
+     * Adiciona um filho no array de filhos do nï¿½.
+     * @param newChildren o novo filho a ser adicionado ao nï¿½ em questï¿½o.
      * */
     public void addChildren(Node<String> newChildren){
         this.children.add(newChildren);
@@ -56,15 +56,16 @@ public class Node<T> {
     }
     
     /***
-     * Retorna o valor de um nó específico.
-     * @return O valor do nó em questão.
+     * Retorna o valor de um nï¿½ especï¿½fico.
+     * @return O valor do nï¿½ em questï¿½o.
      * */
     public T getValue() {
         return this.value;
     }
     
     
-    public void show() {
+    public void show() {    	
+    	System.out.println("Teste");
     	System.out.println("Value: "+ this.getValue());
     	for(Node<String> filhos:this.getChildren()) {
     		System.out.println("Imprimindo filhos:");
